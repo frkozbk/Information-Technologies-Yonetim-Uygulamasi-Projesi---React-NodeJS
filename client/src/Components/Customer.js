@@ -42,7 +42,7 @@ class Customer extends Component {
       }
     });
   };
-  giveOrder = () => {
+  giveOrder = async () => {
     let orderArray = [];
     for (var key in this.state.items) {
       if (this.state.items[key] === true) {
@@ -53,9 +53,10 @@ class Customer extends Component {
       order: orderArray,
       tableName: this.props.auth.user.name
     };
-    this.props.makeOrder(newOrder);
+    await this.props.makeOrder(newOrder);
+    document.location.reload();
   };
-  orderEmber = () => {
+  orderEmber = async () => {
     var now = moment(new Date());
     var end = this.state.lastOrderEmberDate;
     var duration = moment.duration(now.diff(end));
@@ -66,8 +67,9 @@ class Customer extends Component {
       order: ["Köz"],
       tableName: this.props.auth.user.name
     };
-    this.props.makeOrder(newOrder);
+    await this.props.makeOrder(newOrder);
     this.setState({ lastOrderEmberDate: moment(new Date()) });
+    document.location.reload();
   };
   render() {
     let orderNumber = (() => {

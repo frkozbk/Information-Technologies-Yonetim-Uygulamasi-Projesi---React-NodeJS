@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 import "../Style/login.scss";
 class Login extends Component {
   state = { tableName: "", password: "" };
-
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/admin");
+    }
+  }
   componentWillReceiveProps = nextProps => {
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push("/admin");
-    }
-    //Login formunda bir hata varsa bunu state'e koy
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
     }
   };
 
@@ -42,7 +42,7 @@ class Login extends Component {
             onChange={this.handleOnChange}
           />
           <input
-            type="text"
+            type="password"
             placeholder="Şifre"
             name="password"
             value={this.state.password}
