@@ -6,6 +6,9 @@ class Admin extends Component {
   state = {};
   componentDidMount() {
     this.props.getOrders();
+    if (this.props.auth.isAuthenticated === false) {
+      this.props.history.push("/");
+    }
   }
   onClick = e => {
     console.log("clicked");
@@ -45,8 +48,8 @@ class Admin extends Component {
     return (
       <div className="admin">
         <header>
-          <h1>Közcü Burak</h1>
-          <p>Masa numarasın tıklayarak seçebilirsiniz</p>
+          <h1>SHISHA LOUNGE</h1>
+          <p>Şiparişe tıklayarak seçebilirsiniz</p>
         </header>
         <main>
           <ul>{renderedOrders}</ul>
@@ -61,7 +64,8 @@ class Admin extends Component {
   }
 }
 const mapStateToProps = state => ({
-  orders: state.orders
+  orders: state.orders,
+  auth: state.auth
 });
 export default connect(
   mapStateToProps,

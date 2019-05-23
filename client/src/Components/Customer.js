@@ -86,7 +86,7 @@ class Customer extends Component {
     return (
       <div className="customer">
         <header className="App-header">
-          <h1>Közcü Burak</h1>
+          <h1>SHISHA LOUNGE</h1>
           <p>
             Şiparişi görsele tıklayarak seçebilsiniz. Karışımlar için birden
             fazla seçebilirsiniz
