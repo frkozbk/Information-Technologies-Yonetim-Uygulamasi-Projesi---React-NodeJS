@@ -150,7 +150,7 @@ class Customer extends Component {
                 }
               />
               <label for="4">
-                <h4>şeftali</h4>
+                <h4>Şeftali</h4>
                 <img src={şeftali} alt="Şeftali" />
               </label>
             </li>
